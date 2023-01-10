@@ -3,6 +3,7 @@ tasks:
     before: |
       docker-compose up -d
       composer install
+      yarn install
       bin/console doctrine:migrations:migrate -n
       wget https://get.symfony.com/cli/installer -O - | bash
       /home/gitpod/.symfony5/bin/symfony server:ca:install
