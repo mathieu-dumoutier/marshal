@@ -1,12 +1,11 @@
 tasks:
   - name: start
-    init: |
+    before: |
       docker-compose up -d
       composer install
       bin/console doctrine:migrations:migrate -n
       wget https://get.symfony.com/cli/installer -O - | bash
       /home/gitpod/.symfony5/bin/symfony server:ca:install
-      /home/gitpod/.symfony5/bin/symfony server:start -d
-    command: yarn encore dev-server
+    command: /home/gitpod/.symfony5/bin/symfony server:start -d && yarn encore dev-server
 
 
